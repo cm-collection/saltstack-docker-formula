@@ -1,0 +1,9 @@
+{
+    "exec-opts": ["native.cgroupdriver=systemd"],
+	"log-driver": "json-file",
+	"log-opts": {"max-size":"128m","max-file":"4"},
+	"iptables": false,
+    "ip-forward": true,
+    "ip-masq": false,
+    "bridge": "none"
+}
