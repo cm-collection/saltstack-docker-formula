@@ -18,10 +18,15 @@
     - require:
       - pkgrepo: {{ tpldot }}.repo
 
-
 {% if not salt['file.file_exists']('/etc/docker/daemon.json') %}
+{{ tpldot }}.docker.servcie:
+  service.running:
+    - name: docker
+    - enable: true
+    - watch:
+      - file: /etc/docker/daemon.json
+
 /etc/docker/daemon.json:
-  file:
-    - managed
+  file.managed:
     - source: salt://{{ tpldir }}/files/daemon.json
 {% endif %}
